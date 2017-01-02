@@ -13,7 +13,7 @@ class HomeController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->layout(false);
+        $this->viewBuilder()->setLayout(false);
         try {
             $phinxTable = TableRegistry::get('Phinxlog');
             $migratedApp = $phinxTable->find()

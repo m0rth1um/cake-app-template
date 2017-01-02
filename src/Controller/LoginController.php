@@ -28,7 +28,7 @@ class LoginController extends AppController
      */
     public function login()
     {
-        $this->viewBuilder()->layout('plain');
+        $this->viewBuilder()->setLayout('plain');
         if (!$this->request->session()->started()) {
             $this->request->session()->start();
         }
@@ -78,7 +78,7 @@ class LoginController extends AppController
      */
     public function forgotPassword()
     {
-        $this->viewBuilder()->layout('plain');
+        $this->viewBuilder()->setLayout('plain');
         if ($this->request->is('post')) {
             if (!empty($this->request->data['email']) && Validation::email($this->request->data['email'])) {
                 $user = $this->Users->getUserByEmail($this->request->data['email']);
@@ -108,7 +108,7 @@ class LoginController extends AppController
      */
     public function restorePassword($userId, $token)
     {
-        $this->viewBuilder()->layout('plain');
+        $this->viewBuilder()->setLayout('plain');
         if (!empty($userId) && !empty($token)) {
             $user = $this->Users->get($userId);
             if (!empty($user)) {
